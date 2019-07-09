@@ -19,3 +19,16 @@ Add user credentials for our Nexus-based repo by adding these servers to your pe
 </servers>
 ```
 And get the cedential values from your team leader or SysOps.
+
+You may want to add the cert for the Nexus server to your JDK's truststore, you can do that like this:
+
+```
+$ keytool -J-Djava.net.useSystemProxies=true -printcert -rfc -sslserver bk-nexus-dev-01.highwire.org:443 > ~/.m2/nexus-cert.pem
+$ sudo keytool -importcert -file ~/.m2/nexus-cert.pem -alias nexus -storepass changeit -keystore $(/usr/libexec/java_home)/lib/security/cacerts
+```
+
+If that is problematic, then you can tell Maven to just shutup-already and trust the server like so:
+
+```
+$ ./mvnw -Dmaven.wagon.http.ssl.insecure=true -Pjar deploy -DskipTests
+```
