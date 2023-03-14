@@ -16,14 +16,11 @@
     <packaging>pom</packaging>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>platform-snapshots</id>
-            <url>https://bk-nexus-dev-01.highwire.org/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>platform-releases</id>
-            <url>https://bk-nexus-dev-01.highwire.org/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
+		<repository>
+			<id>metered-access-highwire-repo</id>
+			<name>Platform Access Control Highwire Repo</name>
+			<url>http://artifact.highwire.org/artifactory/gradle-local</url>
+		</repository>
+	</distributionManagement>
 
 </project>
